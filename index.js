@@ -80,4 +80,5 @@ app.get('/jobcategories', async (req, res) => {
 // app.listen(port, () => {
 //   console.log(`job portal server listening on port ${port}`)
 // })
+module.exports = app;
 module.exports.handler = serverless(app); 
