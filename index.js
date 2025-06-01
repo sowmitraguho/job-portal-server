@@ -3,6 +3,7 @@ const cors = require('cors')
 require('dotenv').config();
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express()
+const serverless = require('serverless-http');
 const port = process.env.PORT || 3000;
 
 //middle wire
@@ -68,6 +69,7 @@ app.get('/jobcategories', async (req, res) => {
 });
 
 
-app.listen(port, () => {
-  console.log(`job portal server listening on port ${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`job portal server listening on port ${port}`)
+// })
+module.exports.handler = serverless(app); 
