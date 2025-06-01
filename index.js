@@ -3,16 +3,7 @@ const cors = require('cors')
 require('dotenv').config();
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express()
-const serverless = require('serverless-http');
 const port = process.env.PORT || 3000;
-
-// Enable CORS manually — required in Vercel serverless
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Or restrict to a specific domain
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
 
 //middle wire
 app.use(cors())
@@ -30,15 +21,41 @@ const client = new MongoClient(uri, {
   }
 });
 
-let jobsCollections;
-let jobCategories;
+// let jobsCollections;
+// let jobCategories;
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // get the jobs
-    jobsCollections = client.db('Jobportal').collection('Jobs');
-    jobCategories = client.db('Jobportal').collection('jobcategories');
+    const jobsCollections = client.db('Jobportal').collection('Jobs');
+    const jobCategories = client.db('Jobportal').collection('jobcategories');
+
+    // get alljobs from database
+    app.get('/alljobs', async (req, res) => {
+      if (!jobsCollections) {
+        return res.status(503).send('Service unavailable, DB not connected yet.');
+      }
+
+      const allJobs = await jobsCollections.find().toArray();
+      // console.log(allJobs);
+      res.send(allJobs);
+    });
+
+    // get job categories
+    app.get('/jobcategories', async (req, res) => {
+      if (!jobCategories) {
+        return res.status(503).send('Service unavailable, DB not connected yet.');
+      }
+
+      const allcategories = await jobCategories.find().toArray();
+      //console.log(allcategories);
+      res.send(allcategories);
+    });
+
+
+
+
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
@@ -54,31 +71,8 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-// get alljobs from database
-app.get('/alljobs', async (req, res) => {
-  if (!jobsCollections) {
-    return res.status(503).send('Service unavailable, DB not connected yet.');
-  }
-
-  const allJobs = await jobsCollections.find().toArray();
- // console.log(allJobs);
-  res.send(allJobs);
-});
-
-// get job categories
-app.get('/jobcategories', async (req, res) => {
-  if (!jobCategories) {
-    return res.status(503).send('Service unavailable, DB not connected yet.');
-  }
-
-  const allcategories = await jobCategories.find().toArray();
-  //console.log(allcategories);
-  res.send(allcategories);
-});
 
 
-// app.listen(port, () => {
-//   console.log(`job portal server listening on port ${port}`)
-// })
-module.exports = app;
-module.exports.handler = serverless(app); 
+app.listen(port, () => {
+  console.log(`job portal server listening on port ${port}`)
+})
