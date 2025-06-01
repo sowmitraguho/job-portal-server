@@ -1,0 +1,79 @@
+{
+  "job_categories": [
+    {
+      "category": "Marketing and Sales",
+      "jobs_available": "10,150 jobs available",
+      "logo": "https://example.com/logos/marketing_sales.png"
+    },
+    {
+      "category": "Finance",
+      "jobs_available": "8,720 jobs available",
+      "logo": "https://example.com/logos/finance.png"
+    },
+    {
+      "category": "Software",
+      "jobs_available": "15,430 jobs available",
+      "logo": "https://example.com/logos/software.png"
+    },
+    {
+      "category": "Management",
+      "jobs_available": "6,890 jobs available",
+      "logo": "https://example.com/logos/management.png"
+    },
+    {
+      "category": "Customer Help",
+      "jobs_available": "9,310 jobs available",
+      "logo": "https://example.com/logos/customer_help.png"
+    },
+    {
+      "category": "Human Resources",
+      "jobs_available": "4,520 jobs available",
+      "logo": "https://example.com/logos/hr.png"
+    },
+    {
+      "category": "Education and Training",
+      "jobs_available": "5,800 jobs available",
+      "logo": "https://example.com/logos/education.png"
+    },
+    {
+      "category": "Healthcare",
+      "jobs_available": "11,200 jobs available",
+      "logo": "https://example.com/logos/healthcare.png"
+    },
+    {
+      "category": "Engineering",
+      "jobs_available": "7,600 jobs available",
+      "logo": "https://example.com/logos/engineering.png"
+    },
+    {
+      "category": "Legal",
+      "jobs_available": "2,900 jobs available",
+      "logo": "https://example.com/logos/legal.png"
+    },
+    {
+      "category": "Data and Analytics",
+      "jobs_available": "6,250 jobs available",
+      "logo": "https://example.com/logos/data_analytics.png"
+    },
+    {
+      "category": "Design and Creative",
+      "jobs_available": "4,980 jobs available",
+      "logo": "https://example.com/logos/design.png"
+    },
+    {
+      "category": "Logistics and Supply Chain",
+      "jobs_available": "5,460 jobs available",
+      "logo": "https://example.com/logos/logistics.png"
+    },
+    {
+      "category": "Construction",
+      "jobs_available": "3,740 jobs available",
+      "logo": "https://example.com/logos/construction.png"
+    },
+    {
+      "category": "Security and Safety",
+      "jobs_available": "2,300 jobs available",
+      "logo": "https://example.com/logos/security.png"
+    }
+  ]
+}
